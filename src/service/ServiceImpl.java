@@ -8,24 +8,16 @@ import metier.Produit;
 
 public class ServiceImpl implements Iservice {
 
-	Collection<Produit> base = new ArrayList<Produit>();
-	
-	public void init() {
-		base.add(new Produit(1, "clavier", 12, 14));
-		base.add(new Produit(2, "souris", 5, 30));
-		base.add(new Produit(3, "disque dur", 127, 45));
-		base.add(new Produit(4, "clé usb", 65, 12));
-		base.add(new Produit(5, "ecran", 36, 70));
-	}
+	public static List<Produit> base = new ArrayList<Produit>();
 	@Override
-	public void ajouterProduit(Produit p) {
-		base.add(p);
+	public void ajouterProduit(List<Produit> list,Produit p) {
+		list.add(p);
 	}
     
 	@Override
-	public void modifierProduit(Produit p,String nom, 
+	public void modifierProduit(List<Produit> list,Produit p,String nom, 
 			double prix, int quantite) {
-		for (Produit produit : base) {
+		for (Produit produit : list) {
 			if(produit.getIdProduit()==p.getIdProduit()) {
 				produit.setNomProduit(nom);
 				produit.setPrix(prix);
@@ -39,10 +31,10 @@ public class ServiceImpl implements Iservice {
 	}
 
 	@Override
-	public void supprimerProduit(int idProduit) {
-		for (Produit produit : base) {
+	public void supprimerProduit(List<Produit> list,int idProduit) {
+		for (Produit produit : list) {
 			if(produit.getIdProduit()==idProduit) {
-				base.remove(produit);
+				list.remove(produit);
 				// pour arrêter la boucle dès qu'on trouve le produit
 				break;
 			}
@@ -59,8 +51,8 @@ public class ServiceImpl implements Iservice {
 	}
 
 	@Override
-	public Produit listerUnProduit(int idProduit) {
-		for (Produit produit : base) {
+	public Produit listerUnProduit(List<Produit> list,int idProduit) {
+		for (Produit produit : list) {
 			if(produit.getIdProduit()==idProduit) {
 				return produit;
 			}			

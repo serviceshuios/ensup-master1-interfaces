@@ -5,6 +5,19 @@ public class Produit {
 	private String nomProduit;
 	private double prix;
 	private int quantite;
+	
+	
+	public Produit() {
+		super();
+	}
+	public Produit(int idProduit, String nomProduit, double prix, int quantite) {
+		super();
+		this.idProduit = idProduit;
+		this.nomProduit = nomProduit;
+		this.prix = prix;
+		this.quantite = quantite;
+	}
+	
 	public int getIdProduit() {
 		return idProduit;
 	}
